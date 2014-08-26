@@ -1,0 +1,120 @@
+// Animation mixin required.
+animation()
+	-webkit-animation arguments
+	-moz-animation arguments
+	-ms-animation arguments
+	-o-animation arguments
+	animation arguments
+
+@keyframes dropin
+	from
+		top calc(unquote("50% - 75px"))
+		opacity 0
+	to
+		top calc(unquote("50% - 25px"))
+		opacity 1.0
+
+@keyframes dropout
+	from
+		top calc(unquote("50% - 25px"))
+		opacity 1.0
+	to
+		top calc(unquote("50% + 25px"))
+		opacity 0
+
+@keyframes vanish
+	from
+		opacity 1.0
+	to
+		opacity 0
+
+body
+	position absolute
+	margin 0 0 0 0
+	width 100%
+	height 100%
+	background-color #202020
+
+#shield
+	position fixed
+	width 100%
+	height 100%
+	z-index 5
+
+#messages
+	position fixed
+	width 100%
+	height 100%
+	background-color #202020
+
+	.message
+		position fixed
+		width 100%
+		top calc(unquote("50% - 25px"))
+		font-size 50px
+		line-height 50px
+		text-align center
+		color #555
+		text-shadow #1a1a1a 2px 2px 0
+		z-index 4
+
+	.incoming
+		animation dropin 0.3s ease-out
+
+	.outgoing
+		animation dropout 0.3s ease-in
+		opacity 0
+
+	&.gone
+		animation vanish 0.5s ease-in
+		opacity 0
+
+	z-index 3
+
+#container
+	position relative
+	padding 20px 20px 20px 20px
+	max-width 100%
+
+.filename
+	position relative
+	padding 15px 10px 5px 10px
+	margin-left 0px
+	height 45px
+	max-width 100%
+	border-bottom-right-radius 8px
+	border-top-right-radius 8px
+	font-size 30px
+	color #555
+	white-space nowrap
+	background-color #252525
+	overflow-x hidden
+	text-shadow #222 2px 2px 0
+	line-height 36px
+
+.filecell
+	height 65px
+	transition opacity 0.25s
+
+	& + .filecell
+		margin-top 5px
+
+.size
+	float left
+	position relative
+	padding 25px 10px 14px 10px
+	width 85px
+	height 26px
+	font-size 15px
+	text-align right
+	margin-right 0px
+	margin-left 0px
+	margin-top 0px
+	border-right 5px solid #202020
+	border-top-left-radius 8px
+	border-bottom-left-radius 8px
+	background-color #252540 //#302C60
+	color #555
+	text-shadow #222 1px 1px 0
+	z-index 1
+
